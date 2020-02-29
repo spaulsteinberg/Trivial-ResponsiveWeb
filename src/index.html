@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" ></script>
+        <title>Learning Angular</title>
+        <link rel="shortcut icon" type="image/jpg" href="https://andrewlock.net/content/images/2016/10/icon.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script src="myApp.js"></script>
+        <script src="myCtrl.js"></script>
+        <script src="myNewCtrl.js"></script>
+        <script src="repeatingElements.js"></script>
+        <script src="twoWayBindingEx.js"></script>
+        <script src="initEmailStatus.js"></script>
+        <script src="changeBack.js"></script>
+        <script src="nestedFuncControllers.js"></script>
+        <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
+            <!-- ng-model links the bind by common name -->
+            <h3 id="bind-model">Basic bind/model</h3>
+            <p>My name is: <input type="text" ng-model="fname"></p>
+            <p ng-bind="fname"></p>
+            <!-- ng-init initializes variable, then bind -->
+            <h3 id="var-init">Variable initialization</h3>
+            <div ng-init="curPrice='89.99'">
+                <p>The current price is: <span ng-bind="curPrice"></span></p>
+            </div>
+            <!-- Angular expressions practice. On a valid color the css background will change -->
+            <h3 id="expressions">Basic Expressions</h3>
+            <p>Last Name: <input type="text" ng-model="lname"></p>
+            <p>{{"Full name is: "+ fname + " " + lname}}</p>
+            <div ng-init="colorChange = 'Input a color to change this field color'">
+                <input style="background-color: {{colorChange}}; width: 25%;" ng-model="colorChange">
+            </div>
+            <!-- Controller practice. Call js file with names from scope and perform action -->
+            <h3 id="controllers">Controllers</h3>
+            <div ng-controller="myCtrl">
+                <p>{{ "Controller name: " + firstName + " " + lastName }}</p>
+                <p> {{"Controller product: " + product }}</p>
+            </div>
+            <div ng-controller="myNewCtrl">
+                <p>{{"Second controller name is: " + firstName + " " + lastName}}</p>
+            </div>
+            <!-- Data binding practice. Initialize with init and then pass to ng-model -->
+            <h3 id="data-binding">Data Binding</h3>
+            <div ng-init="Number1=1; Number2=5">
+                <p>Enter a first Number to multiply: <input type="text" ng-model="Number1"></p>
+                <p>Enter a second Number to multiply: <input type="text" ng-model="Number2"></p>
+                <p>Total when numbers multiplied: {{Number1 * Number2}} </p>
+            </div>
+            <!-- Reapeating element practice. Use ng-repeat -->
+            <h3 id="repeating-elements">Repeating elements</h3>
+            <div ng-controller="repeatingElements">
+                <ul>
+                    <li ng-repeat="month in months">
+                        {{month}}
+                    </li>
+                </ul>
+                <ol>
+                    <li ng-repeat="car in cars">
+                        {{car.name + " " + car.model + " " + car.year}}
+                    </li>
+                </ol>
+            </div>
+            <!-- Call the custom directive defined in myApp-->
+            <div test-directive></div>
+            <!-- ng-model allows two-way data binding-->
+            <h3 id="two-way-binding">Two Way Binding</h3>
+            <div ng-controller="twoWayBindingEx">
+                Favorite Team: <input ng-model="favoriteTeam">
+                <br>You entered: {{favoriteTeam}}<br>
+            </div>
+            <!-- Use to check for validation, used for type validation. <span> groups inline elements.-->
+            <h3 id="input-validation">Input Validation</h3>
+            <form name = "emailForm">
+                Please enter a valid email:
+                <input type="email" name="myAddress" ng-model="text">
+                <span ng-show="emailForm.myAddress.$error.email">Not a valid e-mail address</span>
+            </form>
+            <!-- ng-model can also provide status for application data-->
+            <h3 id="status-validation">Application Data Status Example</h3>
+            <form name="statusForm" ng-controller="initEmailStatus">
+                Please enter email: <input type="email" name="myAddress" ng-model="initEmail" required>
+                <h4>Status</h4>
+                <ol>
+                    <li>{{statusForm.myAddress.$valid }} </li>
+                    <li>{{statusForm.myAddress.$dirty }} </li>
+                    <li>{{statusForm.myAddress.$touched }} </li>
+                </ol>
+            </form>
+            <!-- model binds required tag to css in style.css -->
+            <h3 id="css-ng-model">ng-model With CSS</h3>
+            <form name="req-field-form">
+                Enter your name: <input type="text" ng-model="myText" name="reqText" required>
+            </form>
+            <!-- Two way binding with a controller and clicking -->
+            <h3 id="two-way-binding-click">Two Way Binding With Clicks</h3>
+            <div ng-controller="changeBack">
+                <p ng-click="changeNum()">Click the number to change: {{ number }}</p>
+            </div>
+            <!-- Controllers using nested functions -->
+            <div ng-controller="nestedFuncControllers">
+                <p>First Name: <input type="text" ng-model="firstName"></p>
+                <p>Last Name: <input type="text" ng-model="lastName"></p>
+                <p>Full Name is: {{fullName()}}</p>
+            </div>
+
+        </div>
+    </body>
+</html>

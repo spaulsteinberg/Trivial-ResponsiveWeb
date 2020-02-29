@@ -1,0 +1,4 @@
+/* sets all invalid input fields as red */
+input.ng-invalid{
+    background-color: red;
+}
