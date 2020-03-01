@@ -1,3 +1,4 @@
+//practice with lists and lists of obj printing
 app.controller("repeatingElements", function($scope){
     $scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                     'August', 'September', 'November', 'December'];
