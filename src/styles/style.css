@@ -2,3 +2,9 @@
 input.ng-invalid{
     background-color: red;
 }
+#priceFieldOne{
+    width: 2%;
+}
+#priceFieldTwo{
+    width: 5%;
+}

@@ -17,7 +17,7 @@
         <script src="../scripts/controllers/changeBack.js"></script>
         <script src="../scripts/controllers/nestedFuncControllers.js"></script>
         <script src="../scripts/app/testingRootScope.js"></script>
-        <script src="../scripts/controllers/filters.js"></script>
+        <script src="../scripts/controllers/caseFilters.js"></script>
         <script src="../scripts/controllers/raceResults.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
@@ -113,7 +113,7 @@
             <p> {{msg}}</p>
             <!-- Testing numerous filters here -->
             <h3>Testing Filters</h3>
-            <div ng-controller="filters">
+            <div ng-controller="caseFilters">
                 <p> This was uppercase: {{ toUpper | uppercase }} </p>
                 <p> This was lowercase: {{ toLower | lowercase}} </p>
             </div>
@@ -124,6 +124,17 @@
                             {{runner.name}}
                         </li>
                     </ol>
+                </p>
+            </div>
+            <div id="currency-filter">
+                <p>Enter a number of product: <input type="text" id="priceFieldOne" ng-model="numItems" maxlength="3" required></p>
+                <p>Enter a price for each product <input type="text" id="priceFieldTwo" ng-model="price" maxlength="8" required></p>
+                <p> Your total price comes out to: {{(numItems * price) | currency }}</p>
+            </div>
+            <div ng-controller="searchFilters">
+                <p>Search a city in list: <input type="text" ng-model="toFind"></p>
+                <p ng-repeat="city in cities | filter:toFind">
+                    {{city}}
                 </p>
             </div>
         </div>
