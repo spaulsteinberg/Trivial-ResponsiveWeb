@@ -8,3 +8,6 @@ input.ng-invalid{
 #priceFieldTwo{
     width: 5%;
 }
+.sortingTableHead{
+    font-size: 16px;
+}

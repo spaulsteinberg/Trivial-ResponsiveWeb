@@ -137,6 +137,26 @@
                     {{city}}
                 </p>
             </div>
+            <div ng-controller="sortTable">
+                <table border="1" width="50%">
+                    <thead align="center"> <strong class="sortingTableHead">Table Click to Sort</strong></thead>
+                    <tr>
+                        <th ng-click="orderByThis('capital')">Capital</th>
+                        <th ng-click="orderByThis('country')">Country</th>
+                    </tr>
+                    <tr ng-repeat="x in countryInfo | orderBy: userOrder">
+                        <td>{{x.capital}}</td>
+                        <td>{{x.country}}</td>
+                    </tr>
+                </table>
+                <p><strong>Filter for European Countries With Populations over 1 million</strong> </p>
+                <ul>
+                    <!-- ng-show will only show the real results. Without this empty strings from the undesired will show-->
+                    <li ng-repeat="x in countryInfo" ng-show="(x | myCustomFilter).length > 0">
+                        {{x| myCustomFilter}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
