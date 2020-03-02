@@ -11,3 +11,14 @@ input.ng-invalid{
 .sortingTableHead{
     font-size: 16px;
 }
+p.timeout{
+    font-weight: bold;
+    font-size: 16;
+    text-align: center;
+}
+p.interval-time, p.interval-message {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color: purple;
+}

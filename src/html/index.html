@@ -159,10 +159,20 @@
                     </li>
                 </ul>
             </div>
-            <!-- Services section-->
+            <!-- Services section, show where window is running, sample HTTP, timeout, interval-->
             <h3>Services</h3>
             <div ng-controller="myLocation">
                 <p> Your URL is: {{myUrl}} </p>
+            </div>
+            <div ng-controller="w3Http">
+                <p> HTTP response is: {{w3HttpResponse}}</p>
+            </div>
+            <div ng-controller="timeoutResponse">
+                <p class="timeout">{{headline}}</p>
+            </div>
+            <div ng-controller="timeInterval">
+                <p class="interval-time">{{curTime}}</p>
+                <p class="interval-message">{{message}}</p>
             </div>
         </div>
     </body>
