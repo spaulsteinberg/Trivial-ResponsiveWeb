@@ -19,6 +19,8 @@
         <script src="../scripts/app/testingRootScope.js"></script>
         <script src="../scripts/controllers/caseFilters.js"></script>
         <script src="../scripts/controllers/raceResults.js"></script>
+        <script src="../scripts/filters/customFilters.js"></script>
+        <script src="../scripts/controllers/services.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -156,6 +158,11 @@
                         {{x| myCustomFilter}}
                     </li>
                 </ul>
+            </div>
+            <!-- Services section-->
+            <h3>Services</h3>
+            <div ng-controller="myLocation">
+                <p> Your URL is: {{myUrl}} </p>
             </div>
         </div>
     </body>
