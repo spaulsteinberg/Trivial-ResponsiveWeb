@@ -209,6 +209,17 @@
                 <select ng-model="altSelections" ng-options="x for (x,y) in altCars"></select>
                 <p>{{altSelections.model + " " + altSelections.year + " " + altSelections.origin}}</p>
             </div>
+            <!-- Testing DOM -->
+            <h3>Testing Angular DOM</h3>
+            <!-- First set submit to disabled, then bind value to ng-model for the checkbox-->
+            <div ng-init="dis=true">
+                <button type="submit" ng-disabled="dis">I am Disabled</button>
+                <input type="checkbox" ng-model="dis">I am active</button>
+                <p>Active button value is: {{dis}}</p>
+                <p ng-visible="true"> I am a visible paragraph</p>
+                <p>Enter a number greater than 100 to see message: <input type="number" maxlength="4" ng-model="overThreshold">
+                <span ng-show="overThreshold > 100" style="color:red"><strong>{{overThreshold}}</strong></span></p>
+            </div>
         </div>
     </body>
 </html>
