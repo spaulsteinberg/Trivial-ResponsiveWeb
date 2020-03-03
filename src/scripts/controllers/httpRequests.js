@@ -19,5 +19,5 @@ app.controller("namesFromServer", function($scope, $http){
 
     $scope.sortBy = function(method){
         $scope.sortMethod = method;
-    }
+    };
 });

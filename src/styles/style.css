@@ -34,4 +34,5 @@ table#names-countries tr:nth-child(even){
 }
 table#names-countries th{
     font-size: 20px;
+    background-color: pink;
 }

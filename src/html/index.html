@@ -22,6 +22,7 @@
         <script src="../scripts/filters/customFilters.js"></script>
         <script src="../scripts/controllers/services.js"></script>
         <script src="../scripts/controllers/httpRequests.js"></script>
+        <script src="../scripts/controllers/selectControllers.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -185,14 +186,28 @@
                 <table id ="names-countries" border="3", width="50%">
                     <!-- Create header row, have sorting according to click -->
                     <tr>
+                        <th><strong>Index</strong></th>
                         <th ng-click="sortBy('Name')"><strong>Name</strong></th>
                         <th ng-click="sortBy('Country')"><strong>Country</strong></th>
                     </tr>
                     <tr ng-repeat="x in myData | orderBy:sortMethod">
+                        <td>{{$index + 1}}</td>
                         <td>{{x.Name}}</td>
                         <td>{{x.Country}}</td>
                     </tr>
                 </table>
+            </div>
+            <!-- Select boxes -->
+            <h3>Using Select Boxes</h3>
+            <div ng-controller="selectFilterBy">
+                <p>Select a car: </p>
+                <!--ng-options will create the options. better than repeat here because it can use objs-->
+                <select ng-model="selectedCar" ng-options="x.model for x in cars"></select>
+                <p>Manufacturer is: {{selectedCar.manufacturer}}</p>
+                <!-- Can use key-value pairs in options...data source as obj-->
+                <p>Select a car: </p>
+                <select ng-model="altSelections" ng-options="x for (x,y) in altCars"></select>
+                <p>{{altSelections.model + " " + altSelections.year + " " + altSelections.origin}}</p>
             </div>
         </div>
     </body>
