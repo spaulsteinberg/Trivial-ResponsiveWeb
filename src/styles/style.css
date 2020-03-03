@@ -22,3 +22,16 @@ p.interval-time, p.interval-message {
     text-align: center;
     color: purple;
 }
+table#names-countries {
+    border-color: green;
+    font-weight: bold;
+}
+table#names-countries tr:nth-child(odd){
+    background-color: cyan;
+}
+table#names-countries tr:nth-child(even){
+    background-color: lightsalmon;
+}
+table#names-countries th{
+    font-size: 20px;
+}
