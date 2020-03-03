@@ -21,6 +21,7 @@
         <script src="../scripts/controllers/raceResults.js"></script>
         <script src="../scripts/filters/customFilters.js"></script>
         <script src="../scripts/controllers/services.js"></script>
+        <script src="../scripts/controllers/httpRequests.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -173,6 +174,25 @@
             <div ng-controller="timeInterval">
                 <p class="interval-time">{{curTime}}</p>
                 <p class="interval-message">{{message}}</p>
+            </div>
+            <!-- HTTP section -->
+            <h3>HTTP Requests</h3>
+            <div ng-controller="funcGet">
+                <p> {{response}} </p>
+            </div>
+            <!-- Since myData holds an obj that holds a list of objs, go through each and get field-->
+            <div ng-controller="namesFromServer">
+                <table border="3", width="50%">
+                    <!-- Create header row, have sorting according to click -->
+                    <tr>
+                        <th ng-click="sortBy('Name')"><strong>Name</strong></th>
+                        <th ng-click="sortBy('Country')"><strong>Country</strong></th>
+                    </tr>
+                    <tr ng-repeat="x in myData | orderBy:sortMethod">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.Country}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>
