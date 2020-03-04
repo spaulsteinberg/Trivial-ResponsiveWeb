@@ -1,4 +1,4 @@
-
+//practice controller for select boxes
 app.controller("selectFilterBy", function($scope){
     $scope.cars = [ 
         {manufacturer: "Ferrari", year: 2019, model:"F8 Tributo"},

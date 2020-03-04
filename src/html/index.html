@@ -23,6 +23,7 @@
         <script src="../scripts/controllers/services.js"></script>
         <script src="../scripts/controllers/httpRequests.js"></script>
         <script src="../scripts/controllers/selectControllers.js"></script>
+        <script src="../scripts/controllers/mouseEvents.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -219,6 +220,29 @@
                 <p ng-visible="true"> I am a visible paragraph</p>
                 <p>Enter a number greater than 100 to see message: <input type="number" maxlength="4" ng-model="overThreshold">
                 <span ng-show="overThreshold > 100" style="color:red"><strong>{{overThreshold}}</strong></span></p>
+            </div>
+            <!-- Testing some mouse events-->
+            <h3>Mouse Events</h3>
+            <div ng-controller="mouseHovering">
+                <!-- moving the mouse in the elements span causes count to rise, mouse leave is a reset -->
+                <p><span ng-mousemove="hover()" ng-mouseleave="leave()">{{count}}</span></p>
+            </div>
+            <!-- Hiding or showing on button click, like a tab almost... -->
+            <div ng-controller="showMenu">
+                <button ng-click="onMenuButtonClick()">Click for Menu</button>
+                <div  ng-show="isShowing">
+                    <ul>Menu Items:
+                        <li ng-repeat="item in menuItems">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Passing events-->
+            <div ng-controller="hoverEventCoords">
+                <div>
+                    <br>
+                    <textarea id="event-pass-textarea" ng-mousemove="getCoords($event)">Hover around for coordinates displayed below</textarea>
+                    <p>Coordinates: {{xCoord + ", " + yCoord}}</p>
+                </div>
             </div>
         </div>
     </body>

@@ -36,3 +36,10 @@ table#names-countries th{
     font-size: 20px;
     background-color: pink;
 }
+
+textarea#event-pass-textarea {
+    background-color: magenta;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-appearance: none;
+    box-shadow: 0 0 5px 5px blue;
+}
