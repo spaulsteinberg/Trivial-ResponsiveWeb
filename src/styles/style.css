@@ -53,3 +53,9 @@ textarea#event-pass-textarea {
     -webkit-appearance: none;
     box-shadow: 2px 2px 0 0 red;
 }
+.req-name-bar{
+    background-color: lightseagreen;
+    border-radius: 7px;
+    border-color: transparent;
+    -webkit-appearance: none;
+}

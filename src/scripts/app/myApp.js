@@ -8,4 +8,3 @@ app.directive("testDirective", function(){
         template: "<h1> I am a custom directive! </h1>" //template is the content
     };
 });
-

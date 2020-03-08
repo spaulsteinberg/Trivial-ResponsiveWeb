@@ -25,6 +25,7 @@
         <script src="../scripts/controllers/selectControllers.js"></script>
         <script src="../scripts/controllers/mouseEvents.js"></script>
         <script src="../scripts/controllers/forms.js"></script>
+        <script src="../scripts/controllers/validate.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -266,15 +267,39 @@
             </div>
             <br>
             <div ng-controller="formsTest">
-                <form class="form-reset-submit-buttons" ng-show="show" novalidate>
+                <form class="form-reset-submit-buttons" ng-show="show" name="myForm" novalidate>
                     <div>
-                        First Name: <input type="text" maxlength="20" ng-model="user.firstName">
-                        Last Name: <input type="text" maxlength="30" ng-model="user.lastName">
-                        Email: <input type="email" maxlength="40" ng-model="user.email">
+                        First Name: <input type="text" name="fname" maxlength="20" ng-model="user.firstName">
+                        Last Name: <input type="text" name="lname" maxlength="30" ng-model="user.lastName">
+                        Email: <input type="email" name="email" maxlength="40" ng-model="user.email">
                     </div>
-                    <span><button ng-click="reset()">Reset</button> <button ng-click="submit()" ng-model="show">Submit</button></span>
+                    <span><button ng-click="reset()">Reset</button> <button ng-click="submit()" ng-model="show"
+                        ng-disabled="myForm.email.$dirty && myForm.email.$invalid && myForm.fname.length > 0
+                        && myForm.lname.length > 0">Submit</button></span>
                 </form>
             </div>
+            <!-- Testing angular validation -->
+            <form ng-controller="validation" name="myForm" novalidate>
+                <p>Username<br>
+                <input class="req-name-bar" type="text" name="user" ng-model="user" required>
+                <span style="color: red;" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                    <span ng-show="myForm.user.$error.required">A valid username is required.</span>
+                </span>
+                </p>
+                <p>Email<br>
+                <input class="req-name-bar" type="email" name="email" ng-model="email" required>
+                <span style="color: red;" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                    <span ng-show="myForm.email.$error.required">Email is required.</span>
+                    <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                </span>
+                </p>
+                <p>
+                    <input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+                    myForm.email.$dirty && myForm.email.$invalid">
+                </p>
+            </form>
+            <!-- Testing includes for file -->
+            <div ng-include="'pagefortest.html'"></div>
         </div>
     </body>
 </html>
