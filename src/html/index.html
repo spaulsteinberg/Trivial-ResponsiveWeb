@@ -24,6 +24,7 @@
         <script src="../scripts/controllers/httpRequests.js"></script>
         <script src="../scripts/controllers/selectControllers.js"></script>
         <script src="../scripts/controllers/mouseEvents.js"></script>
+        <script src="../scripts/controllers/forms.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -134,7 +135,7 @@
             <div id="currency-filter">
                 <p>Enter a number of product: <input type="text" id="priceFieldOne" ng-model="numItems" maxlength="3" required></p>
                 <p>Enter a price for each product <input type="text" id="priceFieldTwo" ng-model="price" maxlength="8" required></p>
-                <p> Your total price comes out to: {{(numItems * price) | currency }}</p>
+                <p ng-show="(numItems.length > 0 && price > 0)"> Your total price comes out to: {{(numItems * price) | currency }}</p>
             </div>
             <div ng-controller="searchFilters">
                 <p>Search a city in list: <input type="text" ng-model="toFind"></p>
@@ -216,7 +217,7 @@
             <div ng-init="dis=true">
                 <button type="submit" ng-disabled="dis">I am Disabled</button>
                 <input type="checkbox" ng-model="dis">I am active</button>
-                <p>Active button value is: {{dis}}</p>
+                {{dis}}
                 <p ng-visible="true"> I am a visible paragraph</p>
                 <p>Enter a number greater than 100 to see message: <input type="number" maxlength="4" ng-model="overThreshold">
                 <span ng-show="overThreshold > 100" style="color:red"><strong>{{overThreshold}}</strong></span></p>
@@ -243,6 +244,36 @@
                     <textarea id="event-pass-textarea" ng-mousemove="getCoords($event)">Hover around for coordinates displayed below</textarea>
                     <p>Coordinates: {{xCoord + ", " + yCoord}}</p>
                 </div>
+            </div>
+            <!-- Angular with Forms -->
+            <h3>Using Forms</h3>
+            <form name="first-form">
+                <input type="radio" ng-model="selectedVar" value="optionOne">Option 1
+                <input type="radio" ng-model="selectedVar" value="optionTwo">Option 2
+                <input type="radio" ng-model="selectedVar" value="optionThree">Option 3
+            </form>
+            <!-- Use directives switch and switch-when. Acts like a switch statement.-->
+            <div class="check-selections" ng-switch="selectedVar">
+                <div ng-switch-when="optionOne">
+                    <p><span>You have checked Option 1!!</span></p>
+                </div>
+                <div ng-switch-when="optionTwo">
+                    <p><span>You have checked Option 2!!</span></p>
+                </div>
+                <div ng-switch-when="optionThree">
+                    <p><span>You have checked Option 3!!</span></p>
+                </div>
+            </div>
+            <br>
+            <div ng-controller="formsTest">
+                <form class="form-reset-submit-buttons" ng-show="show" novalidate>
+                    <div>
+                        First Name: <input type="text" maxlength="20" ng-model="user.firstName">
+                        Last Name: <input type="text" maxlength="30" ng-model="user.lastName">
+                        Email: <input type="email" maxlength="40" ng-model="user.email">
+                    </div>
+                    <span><button ng-click="reset()">Reset</button> <button ng-click="submit()" ng-model="show">Submit</button></span>
+                </form>
             </div>
         </div>
     </body>

@@ -43,3 +43,13 @@ textarea#event-pass-textarea {
     -webkit-appearance: none;
     box-shadow: 0 0 5px 5px blue;
 }
+.check-selections p span{
+    font-weight: bold;
+    background: linear-gradient(45deg, lightblue, pink);
+}
+.form-reset-submit-buttons button{
+    padding: 5px;
+    margin: 2px solid black;
+    -webkit-appearance: none;
+    box-shadow: 2px 2px 0 0 red;
+}
