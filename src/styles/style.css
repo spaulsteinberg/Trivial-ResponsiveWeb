@@ -59,3 +59,39 @@ textarea#event-pass-textarea {
     border-color: transparent;
     -webkit-appearance: none;
 }
+/* .anim and .ng hide will be for the transition animations */
+.anim {
+    transition: all linear 0.5s;
+    background-color: lightblue;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  
+  .ng-hide {
+    height: 0;
+    width: 0;
+    background-color: transparent;
+    top:-200px;
+    left: 200px;
+  }
+
+  @keyframes myChange{
+      0%{
+        height: 300px;
+        opacity: .75;
+      }
+      50% {
+          height: 150px;
+          opacity: .25;
+      }
+      100% {
+          height: 0;
+          opacity: 0;
+      }
+  }
+  div#toHide.ng-hide{
+      animation: all 2s myChange ease-out;
+  }

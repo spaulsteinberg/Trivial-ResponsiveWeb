@@ -1,5 +1,5 @@
 //defines a module named myApp...allows for controllers, directives, etc...
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ['ngAnimate', 'ngRoute']);
 
 //create a custom directive
 app.directive("testDirective", function(){
@@ -8,3 +8,4 @@ app.directive("testDirective", function(){
         template: "<h1> I am a custom directive! </h1>" //template is the content
     };
 });
+
