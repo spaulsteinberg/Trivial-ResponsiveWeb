@@ -1,7 +1,38 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" ></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.min.js></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js"></script>
+        <title>Route Test</title>
+    </head>
     <body>
         <p> I am another page that got routed (1) </p>
         <p> {{messageToSend}} </p>
+
+        <div ng-app="routeApp">
+            <div ng-controller="showName">
+                {{name}}
+                <p><a href="#/!">Index Page </a><a href="#!/route_test2">Route 2</a></p>
+                <div ng-view></div>
+            </div>
+        </div>
     </body>
+    <script>
+        var routeApp=angular.module("routeApp", ['ngRoute']);
+        routeApp.controller("showName", function($scope){
+            $scope.name = "Samuel Steinberg";
+        });
+        routeApp.config(function($routeProvider){
+            $routeProvider
+            .when("/", {
+                templateUrl: "index.html"
+            })
+            .when("/route_test2", {
+                templateUrl: "route_test2.html"
+            })
+        });
+
+    </script>
 </html>
+

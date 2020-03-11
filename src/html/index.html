@@ -3,7 +3,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" ></script>
         <script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.min.js></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js"></script>
         <title>Learning Angular</title>
         <link rel="shortcut icon" type="image/jpg" href="https://andrewlock.net/content/images/2016/10/icon.png">
         <link rel="stylesheet" type="text/css" href="../styles/style.css">
@@ -28,7 +28,7 @@
         <script src="../scripts/controllers/mouseEvents.js"></script>
         <script src="../scripts/controllers/forms.js"></script>
         <script src="../scripts/controllers/validate.js"></script>
-       <!-- <script src="../scripts/config/config.js"></script> -->
+        <script src="../scripts/config/config.js"></script>
         <div ng-app="myApp"> <!-- ng-app sets up angular environ -->
             <!-- ng-model links the bind by common name -->
             <h3 id="bind-model">Basic bind/model</h3>
@@ -313,10 +313,15 @@
                     Hide this text!!</div>
             </div>
             <h3>Routing Tests</h3>
-            <p> Clicks the links to navigate different pages: </p>
-            <p><a href="#!/">Index Page </a><a href="#!/route_test1">Route 1</a><a href="#!/route_test2">Route 2</a>
-            </p>
-            <div ng-view></div>
+            <p> Clicks the links to navigate different pages (Double click to close): </p>
+            <!-- this will route according to the config, and show on single click, not on double-->
+            <div ng-controller="closeOut">
+                <p><a href="#!/route_test2" ng-click="alwaysShow()" ng-dblclick="showMe()">Route 2 </a><a href="#!/pagefortest" ng-click="alwaysShow()" ng-dblclick="showMe()">Test Page</a>
+                </p>
+                <div ng-show="show">
+                    <div ng-view></div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
